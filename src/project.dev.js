@@ -1,4 +1,167 @@
-require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"Bullet":[function(require,module,exports){
+require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"BlockBuilder":[function(require,module,exports){
+"use strict";
+cc._RF.push(module, '9f661ss2YRAj6AIYWV5T2Ap', 'BlockBuilder');
+// demo_catch_star/scripts/BlockBuilder.js
+
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+
+var _ColorBlock = require('./ColorBlock');
+
+var _ColorBlock2 = _interopRequireDefault(_ColorBlock);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+        enumerable: descriptor.enumerable,
+        configurable: descriptor.configurable,
+        writable: descriptor.writable,
+        value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+}
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+        desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+        desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+        return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+        desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+        desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+        Object['define' + 'Property'](target, property, desc);
+        desc = null;
+    }
+
+    return desc;
+}
+
+function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+}
+
+var SimpleLayout = require('SimpleLayout');
+
+var _cc$_decorator = cc._decorator,
+    ccclass = _cc$_decorator.ccclass,
+    property = _cc$_decorator.property;
+var BlockBuilder = (_dec = property(cc.Prefab), _dec2 = property(SimpleLayout), _dec3 = property(), ccclass(_class = (_class2 = function (_cc$Component) {
+    _inherits(BlockBuilder, _cc$Component);
+
+    function BlockBuilder() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        _classCallCheck(this, BlockBuilder);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = BlockBuilder.__proto__ || Object.getPrototypeOf(BlockBuilder)).call.apply(_ref, [this].concat(args))), _this), _initDefineProp(_this, 'colorBlock', _descriptor, _this), _initDefineProp(_this, 'simpleLayout', _descriptor2, _this), _initDefineProp(_this, '_speed', _descriptor3, _this), _temp), _possibleConstructorReturn(_this, _ret);
+    }
+
+    /**
+     * @type {SimpleLayout}
+     */
+
+
+    _createClass(BlockBuilder, [{
+        key: 'generate',
+        value: function generate() {
+            this.simpleLayout.resetLayout();
+
+            for (var index = 0; index < this._speed; index++) {
+                var item = cc.instantiate(this.colorBlock);
+                this.node.addChild(item);
+                item.getComponent(_ColorBlock2.default).setup(Math.floor(Math.random() * 6));
+                this.simpleLayout.addItem(item);
+            }
+
+            this.sendMessage();
+        }
+    }, {
+        key: 'removeSome',
+        value: function removeSome() {
+            var count = Math.min(this.node.childrenCount, this._speed);
+            for (var index = 0; index < count; index++) {
+                var items = this.node.children;
+                items[index].destroy();
+            }
+            this.scheduleOnce(this.sendMessage.bind(this));
+        }
+    }, {
+        key: 'removeAll',
+        value: function removeAll() {
+            this.node.children.map(function (item) {
+                return item.destroy();
+            });
+            this.scheduleOnce(this.sendMessage.bind(this));
+        }
+    }, {
+        key: 'sendMessage',
+        value: function sendMessage() {
+            var counts = this.node.childrenCount;
+            var event = new cc.Event.EventCustom('blocks_num_change', true);
+            event.setUserData({
+                counts: counts
+            });
+            this.node.dispatchEvent(event);
+        }
+    }]);
+
+    return BlockBuilder;
+}(cc.Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'colorBlock', [_dec], {
+    enumerable: true,
+    initializer: function initializer() {
+        return null;
+    }
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'simpleLayout', [_dec2], {
+    enumerable: true,
+    initializer: function initializer() {
+        return null;
+    }
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, '_speed', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+        return 10;
+    }
+})), _class2)) || _class);
+exports.default = BlockBuilder;
+module.exports = exports['default'];
+
+cc._RF.pop();
+},{"./ColorBlock":"ColorBlock","SimpleLayout":"SimpleLayout"}],"Bullet":[function(require,module,exports){
 "use strict";
 cc._RF.push(module, 'd4594TSpjxFLoJyX5fIU7QR', 'Bullet');
 // demo/script/Bullet.js
@@ -179,7 +342,7 @@ function _initializerWarningHelper(descriptor, context) {
 var _cc$_decorator = cc._decorator,
     ccclass = _cc$_decorator.ccclass,
     property = _cc$_decorator.property;
-var ColorBlock = (_dec = property(cc.Label), ccclass(_class = (_class2 = function (_cc$Component) {
+var ColorBlock = (_dec = property(cc.Sprite), ccclass(_class = (_class2 = function (_cc$Component) {
     _inherits(ColorBlock, _cc$Component);
 
     function ColorBlock() {
@@ -193,25 +356,31 @@ var ColorBlock = (_dec = property(cc.Label), ccclass(_class = (_class2 = functio
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ColorBlock.__proto__ || Object.getPrototypeOf(ColorBlock)).call.apply(_ref, [this].concat(args))), _this), _initDefineProp(_this, 'label', _descriptor, _this), _temp), _possibleConstructorReturn(_this, _ret);
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ColorBlock.__proto__ || Object.getPrototypeOf(ColorBlock)).call.apply(_ref, [this].concat(args))), _this), _initDefineProp(_this, 'sprite', _descriptor, _this), _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(ColorBlock, [{
         key: 'setup',
-        value: function setup(dataList) {
+        value: function setup() {
             var _this2 = this;
 
-            dataList.map(function (data) {
-                var item = cc.instantiate(_this2.menuBtn);
-                _this2.node.addChild(item);
-                item.getComponent('MenuButton').setup(data);
-                _this2.simpleLayout.addItem(item);
+            var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+            cc.loader.loadRes('icon_' + index, cc.SpriteFrame, function (err, spriteFrame) {
+                if (_this2.sprite && !err) {
+                    _this2.sprite.spriteFrame = spriteFrame;
+
+                    var moveSpeed = Math.random() * 6;
+                    var sequence = cc.sequence(cc.moveTo(moveSpeed, cc.p(642, _this2.node.y)), cc.moveTo(moveSpeed, cc.p(-642, _this2.node.y)));
+                    var action = cc.repeatForever(sequence);
+                    _this2.node.runAction(action);
+                }
             });
         }
     }]);
 
     return ColorBlock;
-}(cc.Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'label', [_dec], {
+}(cc.Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'sprite', [_dec], {
     enumerable: true,
     initializer: function initializer() {
         return null;
@@ -402,7 +571,184 @@ cc.Class({
 });
 
 cc._RF.pop();
-},{}],"Focusable":[function(require,module,exports){
+},{}],"ExitButton":[function(require,module,exports){
+"use strict";
+cc._RF.push(module, 'eaeea3QAJFJcIuCY12L0/fm', 'ExitButton');
+// demo_catch_star/scripts/ExitButton.js
+
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _dec, _class, _desc, _value, _class2, _descriptor;
+
+var _MenuButton2 = require('./MenuButton');
+
+var _MenuButton3 = _interopRequireDefault(_MenuButton2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+        enumerable: descriptor.enumerable,
+        configurable: descriptor.configurable,
+        writable: descriptor.writable,
+        value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+}
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+        desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+        desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+        return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+        desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+        desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+        Object['define' + 'Property'](target, property, desc);
+        desc = null;
+    }
+
+    return desc;
+}
+
+function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+}
+
+var SysEvent = require('SysEvent');
+
+var _cc$_decorator = cc._decorator,
+    ccclass = _cc$_decorator.ccclass,
+    property = _cc$_decorator.property;
+
+var INDEX = 0;
+/**
+ * @type {MenuButton}
+ */
+var ExitButton = (_dec = property(SysEvent), ccclass(_class = (_class2 = function (_MenuButton) {
+    _inherits(ExitButton, _MenuButton);
+
+    function ExitButton() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        _classCallCheck(this, ExitButton);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ExitButton.__proto__ || Object.getPrototypeOf(ExitButton)).call.apply(_ref, [this].concat(args))), _this), _initDefineProp(_this, 'sysEvent', _descriptor, _this), _temp), _possibleConstructorReturn(_this, _ret);
+    }
+
+    _createClass(ExitButton, [{
+        key: 'onLoad',
+        value: function onLoad() {
+            var _this2 = this;
+
+            this.param = [{
+                text: 'EXIT',
+                onConfirm: function onConfirm() {
+                    _this2.exitGame();
+                }
+            }, {
+                text: 'RESTART',
+                onConfirm: function onConfirm() {
+                    _this2.restartGame();
+                }
+            }];
+
+            this.setup(this.param[0]);
+        }
+    }, {
+        key: 'onGotFocus',
+        value: function onGotFocus() {
+            _get(ExitButton.prototype.__proto__ || Object.getPrototypeOf(ExitButton.prototype), 'onGotFocus', this).call(this);
+            this.sysEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onkeyUp, this);
+        }
+    }, {
+        key: 'onLoseFocus',
+        value: function onLoseFocus() {
+            _get(ExitButton.prototype.__proto__ || Object.getPrototypeOf(ExitButton.prototype), 'onLoseFocus', this).call(this);
+            this.sysEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onkeyUp, this);
+        }
+    }, {
+        key: 'onkeyUp',
+        value: function onkeyUp(event) {
+            switch (event.keyCode) {
+                case cc.KEY.left:
+                case cc.KEY.dpadLeft:
+                case cc.KEY.right:
+                case cc.KEY.dpadRight:
+                    this.responseAction();
+                    this.setup(this.param[++INDEX % 2]);
+                    event.stopPropagation();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }, {
+        key: 'exitGame',
+        value: function exitGame() {
+            cc.game.end();
+        }
+    }, {
+        key: 'restartGame',
+        value: function restartGame() {
+            cc.game.restart();
+        }
+    }, {
+        key: 'responseAction',
+        value: function responseAction() {
+            this.node.stopAllActions();
+            this.node.runAction(cc.sequence(cc.scaleTo(0.2, 0.85), cc.scaleTo(0.2, 1.18), cc.scaleTo(0.2, 1.0)));
+        }
+    }]);
+
+    return ExitButton;
+}(_MenuButton3.default), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'sysEvent', [_dec], {
+    enumerable: true,
+    initializer: function initializer() {
+        return null;
+    }
+})), _class2)) || _class);
+exports.default = ExitButton;
+module.exports = exports['default'];
+
+cc._RF.pop();
+},{"./MenuButton":"MenuButton","SysEvent":"SysEvent"}],"Focusable":[function(require,module,exports){
 "use strict";
 cc._RF.push(module, '74665KfKi1Oabd/kIzvlvz7', 'Focusable');
 // scripts/component/focus/Focusable.js
@@ -502,11 +848,15 @@ exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _class, _desc, _value, _class2, _descriptor;
+var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
 
 var _Menu = require('./Menu');
 
 var _Menu2 = _interopRequireDefault(_Menu);
+
+var _BlockBuilder = require('./BlockBuilder');
+
+var _BlockBuilder2 = _interopRequireDefault(_BlockBuilder);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -559,10 +909,13 @@ function _initializerWarningHelper(descriptor, context) {
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
+var SysFocusGroup = require('SysFocusGroup');
+var ToggleFocus = require('ToggleFocus');
+
 var _cc$_decorator = cc._decorator,
     ccclass = _cc$_decorator.ccclass,
     property = _cc$_decorator.property;
-var Game = (_dec = property(_Menu2.default), ccclass(_class = (_class2 = function (_cc$Component) {
+var Game = (_dec = property(_Menu2.default), _dec2 = property(_BlockBuilder2.default), _dec3 = property(SysFocusGroup), _dec4 = property(cc.Mask), _dec5 = property(cc.Label), ccclass(_class = (_class2 = function (_cc$Component) {
     _inherits(Game, _cc$Component);
 
     function Game() {
@@ -576,8 +929,28 @@ var Game = (_dec = property(_Menu2.default), ccclass(_class = (_class2 = functio
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Game.__proto__ || Object.getPrototypeOf(Game)).call.apply(_ref, [this].concat(args))), _this), _initDefineProp(_this, 'menu', _descriptor, _this), _temp), _possibleConstructorReturn(_this, _ret);
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Game.__proto__ || Object.getPrototypeOf(Game)).call.apply(_ref, [this].concat(args))), _this), _initDefineProp(_this, 'menu', _descriptor, _this), _initDefineProp(_this, 'blockBuilder', _descriptor2, _this), _initDefineProp(_this, 'menuFocusGroup', _descriptor3, _this), _initDefineProp(_this, 'blocksMask', _descriptor4, _this), _initDefineProp(_this, 'count', _descriptor5, _this), _temp), _possibleConstructorReturn(_this, _ret);
     }
+
+    /**
+     * @type {BlockBuilder}
+     */
+
+
+    /**
+     * @type {SysFocusGroup}
+     */
+
+
+    /**
+     * @type {cc.Mask}
+     */
+
+
+    /**
+     * @type {cc.Label}
+     */
+
 
     _createClass(Game, [{
         key: 'onLoad',
@@ -587,22 +960,22 @@ var Game = (_dec = property(_Menu2.default), ccclass(_class = (_class2 = functio
             var data = [{
                 text: 'PLAY',
                 onConfirm: function onConfirm() {
-                    return _this2.play();
+                    return _this2.playAction();
                 }
             }, {
                 text: 'PAUSE',
                 onConfirm: function onConfirm() {
-                    return _this2.pause();
+                    return _this2.pauseAction();
                 }
             }, {
                 text: 'ADD',
                 onConfirm: function onConfirm() {
-                    return _this2.add();
+                    return _this2.addItem();
                 }
             }, {
                 text: 'REMOVE',
                 onConfirm: function onConfirm() {
-                    return _this2.remove();
+                    return _this2.removeSome();
                 }
             }, {
                 text: 'GC',
@@ -612,40 +985,108 @@ var Game = (_dec = property(_Menu2.default), ccclass(_class = (_class2 = functio
             }, {
                 text: 'CLEAN',
                 onConfirm: function onConfirm() {
-                    return _this2.clean();
+                    return _this2.removeAll();
+                }
+            }, {
+                text: 'MASK',
+                onConfirm: function onConfirm() {
+                    return _this2.mask();
+                }
+            }, {
+                text: 'GROUP',
+                onConfirm: function onConfirm() {
+                    return _this2.focusGroup();
                 }
             }];
 
             this.menu.setup(data);
         }
     }, {
-        key: 'play',
-        value: function play() {
+        key: 'onEnable',
+        value: function onEnable() {
+            this.node.on('blocks_num_change', this.refreshCount, this);
+        }
+    }, {
+        key: 'onDisable',
+        value: function onDisable() {
+            this.node.off('blocks_num_change', this.refreshCount, this);
+        }
+    }, {
+        key: 'playAction',
+        value: function playAction() {
             if (this._actions) {
-                cc.ActionManager.resumeTargets(this._actions);
+                cc.director.getActionManager().resumeTargets(this._actions);
+                this._actions = null;
             }
         }
     }, {
-        key: 'pause',
-        value: function pause() {
-            this._actions = cc.ActionManager.pauseAllRunningActions();
+        key: 'pauseAction',
+        value: function pauseAction() {
+            if (!this._actions) {
+                this._actions = cc.director.getActionManager().pauseAllRunningActions();
+            }
         }
     }, {
-        key: 'add',
-        value: function add() {}
+        key: 'addItem',
+        value: function addItem() {
+            this.blockBuilder.generate();
+        }
     }, {
-        key: 'remove',
-        value: function remove() {}
+        key: 'removeSome',
+        value: function removeSome() {
+            this.blockBuilder.removeSome();
+        }
     }, {
         key: 'startGC',
-        value: function startGC() {}
+        value: function startGC() {
+            cc.sys.garbageCollect();
+        }
     }, {
-        key: 'clean',
-        value: function clean() {}
+        key: 'removeAll',
+        value: function removeAll() {
+            this.blockBuilder.removeAll();
+        }
+    }, {
+        key: 'mask',
+        value: function mask() {
+            this.blocksMask.enabled = !this.blocksMask.enabled;
+        }
+    }, {
+        key: 'focusGroup',
+        value: function focusGroup() {
+            this.menuFocusGroup.Captivity = !this.menuFocusGroup.Captivity;
+        }
+    }, {
+        key: 'refreshCount',
+        value: function refreshCount() {
+            var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new CustomEvent();
+
+            this.count.string = event.detail.counts;
+        }
     }]);
 
     return Game;
 }(cc.Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'menu', [_dec], {
+    enumerable: true,
+    initializer: function initializer() {
+        return null;
+    }
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'blockBuilder', [_dec2], {
+    enumerable: true,
+    initializer: function initializer() {
+        return null;
+    }
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'menuFocusGroup', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+        return null;
+    }
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'blocksMask', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+        return null;
+    }
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'count', [_dec5], {
     enumerable: true,
     initializer: function initializer() {
         return null;
@@ -655,7 +1096,7 @@ exports.default = Game;
 module.exports = exports['default'];
 
 cc._RF.pop();
-},{"./Menu":"Menu"}],"ImageLoader":[function(require,module,exports){
+},{"./BlockBuilder":"BlockBuilder","./Menu":"Menu","SysFocusGroup":"SysFocusGroup","ToggleFocus":"ToggleFocus"}],"ImageLoader":[function(require,module,exports){
 "use strict";
 cc._RF.push(module, '25496IkFeJKFL16k7mUUzh1', 'ImageLoader');
 // scripts/component/helper/ImageLoader.js
@@ -2464,10 +2905,17 @@ cc._RF.push(module, 'c2c54kvqNJCLZ2o5vBpMpYv', 'Menu');
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2;
+
+var _MenuButton = require('./MenuButton');
+
+var _MenuButton2 = _interopRequireDefault(_MenuButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -2518,7 +2966,6 @@ function _initializerWarningHelper(descriptor, context) {
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var MenuButton = require('MenuButton');
 var SimpleLayout = require('SimpleLayout');
 
 var _cc$_decorator = cc._decorator,
@@ -2554,7 +3001,7 @@ var Menu = (_dec = property(cc.Prefab), _dec2 = property(SimpleLayout), ccclass(
             dataList.map(function (data) {
                 var item = cc.instantiate(_this2.menuBtn);
                 _this2.node.addChild(item);
-                item.getComponent('MenuButton').setup(data);
+                item.getComponent(_MenuButton2.default).setup(data);
                 _this2.simpleLayout.addItem(item);
             });
         }
@@ -2576,7 +3023,7 @@ exports.default = Menu;
 module.exports = exports['default'];
 
 cc._RF.pop();
-},{"MenuButton":"MenuButton","SimpleLayout":"SimpleLayout"}],"MerryGoScroll":[function(require,module,exports){
+},{"./MenuButton":"MenuButton","SimpleLayout":"SimpleLayout"}],"MerryGoScroll":[function(require,module,exports){
 "use strict";
 cc._RF.push(module, '5d883yB0h9J/5WssmaVTLhi', 'MerryGoScroll');
 // scripts/component/scroll/MerryGoScroll.js
@@ -5984,4 +6431,4 @@ cc.Class({
 });
 
 cc._RF.pop();
-},{"Focusable":"Focusable"}]},{},["Bullet","Eneny","EnenyBullet","EnenyLaunch","Player","ColorBlock","Game","Menu","MenuButton","NetImage","SysEvent","SysEventEmitor","SysEventManager","SysFocus","SysFocusGroup","SysFocusManager","CardName","Focusable","ToggleFocus","ImageLoader","PrefabLoader","PrefabParser","PrefabPoolManager","SearchHelper","ShaderHelper","SimpleLayout","SpriteAnimator","SpriteFrameManager","SysTimerHelper","ItemCard","ItemCricle","ItemList","ListLayout","ListScrollView","MerryGoScroll"]);
+},{"Focusable":"Focusable"}]},{},["Bullet","Eneny","EnenyBullet","EnenyLaunch","Player","BlockBuilder","ColorBlock","ExitButton","Game","Menu","MenuButton","NetImage","SysEvent","SysEventEmitor","SysEventManager","SysFocus","SysFocusGroup","SysFocusManager","CardName","Focusable","ToggleFocus","ImageLoader","PrefabLoader","PrefabParser","PrefabPoolManager","SearchHelper","ShaderHelper","SimpleLayout","SpriteAnimator","SpriteFrameManager","SysTimerHelper","ItemCard","ItemCricle","ItemList","ListLayout","ListScrollView","MerryGoScroll"]);

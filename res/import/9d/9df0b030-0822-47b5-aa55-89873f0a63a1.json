@@ -1,1 +1,21 @@
-{"__type__":"cc.SpriteFrame","content":{"name":"icon_5","texture":"ee4b103c-cea7-42b2-9281-4a8a3591077a","rect":[4,4,56,56],"offset":[0,0],"originalSize":[64,64]}}
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "icon_5",
+    "texture": "ee4b103c-cea7-42b2-9281-4a8a3591077a",
+    "rect": [
+      4,
+      4,
+      56,
+      56
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      64,
+      64
+    ]
+  }
+}
