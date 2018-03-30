@@ -144,7 +144,7 @@
             jsList: jsList,
             groupList: settings.groupList,
             collisionMatrix: settings.collisionMatrix,
-            renderMode: 2
+            renderMode: 0
         };
 
         cc.game.run(option, onStart);
