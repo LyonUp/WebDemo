@@ -957,6 +957,8 @@ var Game = (_dec = property(_Menu2.default), _dec2 = property(_BlockBuilder2.def
         value: function onLoad() {
             var _this2 = this;
 
+            cc.director.setDisplayStats(true);
+
             var data = [{
                 text: 'PLAY',
                 onConfirm: function onConfirm() {
@@ -3290,7 +3292,7 @@ var NetImage = (_dec = property(cc.Sprite), ccclass(_class = (_class2 = function
 
             if (!cc.sys.isNative) {
                 // 浏览器跨域访问有问题，改为从自己的服务器访问之
-                imageUrl = 'http://10.4.146.192:4000/getImage?url=' + imageUrl;
+                imageUrl = 'http://10.4.146.207:4000/getImage?url=' + imageUrl;
             }
 
             cc.loader.load(imageUrl, function (error, texture) {
