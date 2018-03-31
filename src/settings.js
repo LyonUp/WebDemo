@@ -84,21 +84,28 @@ window._CCSettings = {
             ]
         }
     },
-    "launchScene": "db://assets/demo_catch_star/Game.fire",
+    "launchScene": "db://assets/Hello.fire",
     "scenes": [
+        {
+            "url": "db://assets/Hello.fire",
+            "uuid": "dbUiCCFQNFlaczlQlXSJ52"
+        },
         {
             "url": "db://assets/demo_catch_star/Game.fire",
             "uuid": "b9Y4MGuv1ExLdRK30+6Sco"
         }
     ],
     "packedAssets": {
-        "038552f44": [
+        "02b1f5cd3": [
+            "a2MjXRFdtLlYQ5ouAFv/+R",
+            "dbUiCCFQNFlaczlQlXSJ52"
+        ],
+        "05b0c6dd": [
             "11v+IIwOlJdr6Mko/+pSFZ",
             "1eCaIWm2xPQIbbLsUaZOTN",
             "45BHCKmvJJ+ozYJY1ZyYJE",
             "7coWFlgKJNrrxL7x8pfRNI",
             "a1KitHmnZMYoyfXIyAOulr",
-            "a2MjXRFdtLlYQ5ouAFv/+R",
             "b9Y4MGuv1ExLdRK30+6Sco",
             "c6+wWi4HtADomjR/rftzYI",
             "e02V8fVkZFBrAY+1sqr7n1"
