@@ -817,10 +817,10 @@ require = function() {
         value: function onLoad() {
           var _this2 = this;
           cc.director.setDisplayStats(true);
-          var mode = cc._renderType === cc.game.RENDER_TYPE_WEBGL ? "11WEBGL 模式" : "22CANVAS 模式";
+          var mode = cc._renderType === cc.game.RENDER_TYPE_WEBGL ? "01WEBGL 模式" : "22CANVAS 模式";
           var osVersion = " osVersion" + cc.sys.osVersion;
           var osMainVersion = " osMainVersion" + cc.sys.osMainVersion;
-          this.mode.string = mode + osVersion + osMainVersion;
+          this.mode.string = mode + osVersion + osMainVersion + cc.sys.dump();
           var data = [ {
             text: "PLAY",
             onConfirm: function onConfirm() {
