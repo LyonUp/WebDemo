@@ -1,1 +1,21 @@
-{"__type__":"cc.SpriteFrame","content":{"name":"icon_2","texture":"18pCq2cyNOQoX1iRLZ0vUM","rect":[5,5,54,54],"offset":[0,0],"originalSize":[64,64]}}
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "icon_2",
+    "texture": "18pCq2cyNOQoX1iRLZ0vUM",
+    "rect": [
+      5,
+      5,
+      54,
+      54
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      64,
+      64
+    ]
+  }
+}
